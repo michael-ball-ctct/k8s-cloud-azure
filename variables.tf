@@ -1,5 +1,5 @@
 variable "suffix" {
-  description = "Suffix for resource names - Hamish didn't use"
+  description = "mball"
   type        = number
   default     = 2
 }
@@ -7,7 +7,7 @@ variable "suffix" {
 variable "resource_group_name" {
 	description = "Resource group name"
 	type        = string
-	default     = "rg-trimble-001"
+	default     = "rg-trimble-004"
 }
 
 variable "create_rg" {
@@ -25,37 +25,37 @@ variable "prefix" {
 variable "aks_name" {
 	description = "AKS name"
 	type        = string
-	default     = "aks-cluster-001"
+	default     = "aks-cluster-004"
 }
 
 variable "vnet_address_space" {
 	description = "VNet CIDR"
 	type        = string
-	default     = "10.74.1.0/24"
+	default     = "10.74.4.0/24"
 }
 
 variable "subnet_address_prefix" {
   description = "Subnet CIDR"
   type        = string
-  default     = "10.74.1.0/26"
+  default     = "10.74.4.0/26"
 }
 
 variable "dns_service_ip" {
 	description = "DNS service IP for AKS"
 	type        = string
-	default     = "10.74.1.33"
+	default     = "10.74.4.33"
 }
 
 variable "service_cidr" {
 	description = "Service CIDR for AKS"
 	type        = string
-	default     = "10.74.1.32/26"
+	default     = "10.74.4.32/26"
 }
 
 variable "nodepool_name" {
 	description = "Node pool name"
 	type        = string
-	default     = "npapps001"
+	default     = "npapps004"
 }
 
 variable "node_vm_size" {
@@ -81,3 +81,8 @@ variable "location" {
 	type        = string
 	default     = "australiaeast"
 }
+
+locals {
+  full_prefix = "${var.prefix}${var.suffix}"
+}
+
