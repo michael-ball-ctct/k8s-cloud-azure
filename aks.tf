@@ -1,25 +1,25 @@
-resource "azurerm_kubernetes_cluster" "aks" {
-  name                = var.aks_name
-  location            = local.rg_loc
-  resource_group_name = local.rg_name
-  dns_prefix          = "${var.prefix}-dns"
-  sku_tier            = "Free"
-  identity { type = "SystemAssigned" }
-  default_node_pool {
-    name                 = var.nodepool_name
-    node_count           = var.node_count
-    vm_size              = var.node_vm_size
-    vnet_subnet_id       = azurerm_subnet.subnet_nodes.id
-  }
-  network_profile {
-    network_plugin     = "azure"
-    network_policy     = "azure"
-  }
-  role_based_access_control_enabled = true
-  lifecycle {
-    ignore_changes = [ default_node_pool[0].node_count ]
-  }
-}
+# resource "azurerm_kubernetes_cluster" "aks" {
+#   name                = var.aks_name
+#   location            = local.rg_loc
+#   resource_group_name = local.rg_name
+#   dns_prefix          = "${var.prefix}-dns"
+#   sku_tier            = "Free"
+#   identity { type = "SystemAssigned" }
+#   default_node_pool {
+#     name                 = var.nodepool_name
+#     node_count           = var.node_count
+#     vm_size              = var.node_vm_size
+#     vnet_subnet_id       = azurerm_subnet.subnet_nodes.id
+#   }
+#   network_profile {
+#     network_plugin     = "azure"
+#     network_policy     = "azure"
+#   }
+#   role_based_access_control_enabled = true
+#   lifecycle {
+#     ignore_changes = [ default_node_pool[0].node_count ]
+#   }
+# }
 
 
 # resource "azurerm_kubernetes_cluster_node_pool" "additional" {
